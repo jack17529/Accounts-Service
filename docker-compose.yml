@@ -1,0 +1,12 @@
+version: "2"
+services:
+  accounts:
+    build:
+      context: .
+      dockerfile: accounts/Dockerfile
+    restart: always
+    volumes:
+    - .:/go/src/github.com/faith/Accounts2
+    container_name: accounts
+    ports:
+    - 8800:8081
