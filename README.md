@@ -3,8 +3,9 @@
 ## Running
 
 1. Download the project in your GOPATH.
-2. cd inside the folder and run `docker-compose up` using the `docker-compose.yml` file or using `go run accounts/cmd/main.go`.
-3. Start Postman for doing request and response as shown below.
+2. Go to `accounts/pkg/db/db.go` file and fill your database connection information to connect to the database.
+3. cd inside the folder and run `docker-compose up` using the `docker-compose.yml` file or using `go run accounts/cmd/main.go`.
+4. Start Postman for doing request and response as shown below or use curl commands.
 
 ## Request And Response
 
