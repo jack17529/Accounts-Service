@@ -44,3 +44,27 @@ GET response
     "Error": null
 }
 ```
+
+## Architechture
+
+accounts/  
+|---cmd/  
+|------service/  
+|----------server.go          Wire the service.  
+|----------server_gen.go      Also wire the service.  
+|------main.go                Runs the service  
+|---pkg/  
+|------endpoints/  
+|----------endpoint.go        The endpoint logic along with structures for request and reponse.  
+|----------endpoint_gen.go    This will wire the endpoints.  
+|----------middleware.go      Endpoint middleware  
+|------http/  
+|----------handler.go         Transport logic encode/decode data and gorilla mux request reponse routing of the service.  
+|----------handler_gen.go     This will wire the transport.  
+|------io/  
+|----------io.go              The input output structs.
+|------db/  
+|----------db.go              Gets connection to PostgreSQl database.  
+|------service/  
+|----------middleware.go      The service middleware.  
+|----------service.go         Business logic.
