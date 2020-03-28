@@ -46,7 +46,7 @@ GET response
 ```
 
 ## Architechture
-
+```
 accounts/  
 |---cmd/  
 |------service/  
@@ -68,3 +68,4 @@ accounts/
 |------service/  
 |----------middleware.go      The service middleware.  
 |----------service.go         Business logic.
+```
