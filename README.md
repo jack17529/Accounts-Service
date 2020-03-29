@@ -70,3 +70,10 @@ accounts/
 |----------middleware.go      The service middleware.  
 |----------service.go         Business logic.
 ```
+
+## Advantages of UUID
+
+1. Can generate them offline.
+2. Makes replication trivial (as opposed to int's, which makes it REALLY hard)
+3. ORM's usually like them
+4. Unique across applications. So We can use the PK's from our CMS (guid) in our app (also guid) and know we are NEVER going to get a clash.
