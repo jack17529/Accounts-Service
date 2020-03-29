@@ -29,7 +29,7 @@ POST response
 }
 ```
 
-2. GET request done on `http://localhost:8081/create-user`
+2. GET request done on `http://localhost:8081/get-user`
 
 ```
 {
