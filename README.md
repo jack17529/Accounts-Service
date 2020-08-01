@@ -60,7 +60,8 @@ accounts/
 |----------endpoint_gen.go    This will wire the endpoints.  
 |----------middleware.go      Endpoint middleware  
 |------http/  
-|----------handler.go         Transport logic encode/decode data and gorilla mux request reponse routing of the service.  
+|----------handler.go         Transport logic encode/decode data and  
+|                             gorilla mux request reponse routing of the service.  
 |----------handler_gen.go     This will wire the transport.  
 |------io/  
 |----------io.go              The input output structs.  
