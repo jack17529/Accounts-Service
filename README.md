@@ -1,11 +1,16 @@
 # Accounts-Service
 
+Made a account microservice that can create user from a `POST` request and store it in a `Postgres DB`; and can get user information using `UUID` with a `GET` request. Used `bcrypt` to hash the password in the database.
+
+NOTE - This isn't a Sign-Up and Sign-In service, it is just an account service although it can be turned into one with a few lines of code :)
+
 ## Running
 
 1. Download the project in your GOPATH.
-2. Go to `accounts/pkg/db/db.go` file and fill your database connection information to connect to the database.
-3. cd inside the folder and run `docker-compose up` using the `docker-compose.yml` file or using `go run accounts/cmd/main.go`.
-4. Start Postman for doing request and response as shown below or use curl commands.
+2. Create a database with name `users` or whatever name you like.
+3. Go to `accounts/pkg/db/db.go` file and fill your database connection information to connect to the database.
+4. cd inside the folder and run `docker-compose up` using the `docker-compose.yml` file or using `go run accounts/cmd/main.go`.
+5. Start Postman for doing request and response as shown below or use curl commands.
 
 ## Request And Response
 
@@ -46,7 +51,25 @@ GET response
 }
 ```
 
+## Database
+
+ Useful commands to use -
+ 1. Switch over to the postgres account on your server by typing `sudo -i -u postgres`
+ 2. You can now access a Postgres prompt immediately by typing `psql`
+ 3. Use this to see all the tables `\dt`
+ 4. Use this to see info of a particular table `select * from "users";`
+ 
+```
+                  id                  |      email      |                           password                           
+--------------------------------------+-----------------+--------------------------------------------------------------
+ ce843823-e91f-4435-a4df-1b779ab2b587 | bcryptUser      | $2a$10$mtGwIQz3jhwINxH.0832hu5YQql/.kO.oJl3qJvo0EtwPqLZ.L0KO
+ 65c006f3-1c5c-47f1-bd72-48349ddcdb6a | email5     	| $2a$10$ah/zGl1JUvHZ9eUAAG4Nx.NWIdjI1yFVxQGAJ8Zpz4QKyL8U3ATH2
+(2 rows)
+
+```
+
 ## Architechture
+
 ```
 accounts/  
 |---cmd/  
