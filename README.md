@@ -68,6 +68,9 @@ GET response
 
 ```
 
+5. To quit use `\q`
+6. To exit use `exit`
+
 ## Architechture
 
 ```
