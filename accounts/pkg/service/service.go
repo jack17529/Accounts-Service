@@ -7,6 +7,7 @@ import (
 	db "github.com/faith/Accounts2/accounts/pkg/db"
 	io "github.com/faith/Accounts2/accounts/pkg/io"
 	"github.com/gofrs/uuid"
+	"golang.org/x/crypto/bcrypt"
 )
 
 // AccountsService describes the service.
@@ -35,6 +36,15 @@ func (b *basicAccountsService) CreateUser(ctx context.Context, user io.User) (s1
 		return "Failed", errors.New("email or password can't be empty")
 	}
 
+	// As the validations are successful
+	// Hash/encrypt the password
+	hash, err := bcrypt.GenerateFromPassword([]byte(user.Password), 10)
+	if err != nil {
+		return "Failed", errors.New("Error by encrypting the password")
+	}
+
+	user.Password = string(hash) //assigning the hash to password after converting back to string
+
 	_, err2 := db.ExecContext(ctx, sql, user.ID, user.Email, user.Password)
 	if err2 != nil {
 		return "Failed", err2
@@ -49,8 +59,9 @@ func (b *basicAccountsService) GetUser(ctx context.Context, id string) (s0 strin
 
 	db, err := db.GetSession()
 	if err != nil {
-		return "", err
+		return "", errors.New("error could not get session")
 	}
+
 	var email string
 	err3 := db.QueryRow("SELECT email FROM users WHERE id=$1", id).Scan(&email)
 	if err3 != nil {
